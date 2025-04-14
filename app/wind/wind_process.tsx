@@ -16,7 +16,7 @@ export default function WindProcess() {
 
         <SafeAreaView style={styles.container}>
 
-            <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground} >
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground} >
 
                 {/* Overlay Color Layer */}
                 <View style={styles.overlay}>
@@ -30,7 +30,7 @@ export default function WindProcess() {
                     <View style={{ display: 'flex', alignItems: 'center' }}>
 
                         {/* Process Animation */}
-                        <Image source={require('../../assets/images/wind_circle.gif')} style={{ width: 350, height: 350, scale: '180%' }} />
+                        <Image source={require('@/assets/images/wind_circle.gif')} style={{ width: 350, height: 350, scale: '180%' }} />
 
                         {/* Action */}
                         <Text style={{ fontSize: '26px', color: 'white' }}>Вдох (носом)</Text>

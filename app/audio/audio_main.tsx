@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View } from "react-native";
 import { useRouter } from 'expo-router';
-import NavBar from '../nav_bar';
 
 
 export default function Audio() {
@@ -14,7 +13,7 @@ export default function Audio() {
         <SafeAreaView style={styles.container}>
 
             {/* Audio Content */}
-            <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
 
                 {/* ОТДЕЛЬНЫЕ КОМПОНЕНТЫ! С параметрами title и список cards */}
 
@@ -31,7 +30,7 @@ export default function Audio() {
                         <div className='audio-card' style={styles.card}>
 
                             {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/wave.png')} style={styles.card_pic} onClick={() => router.push('/audio/player_1')} />
+                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/wave.png')} style={styles.card_pic} onClick={() => router.push('/audio/_players/player_1')} />
 
                             {/* Card Title */}
                             <Text style={styles.card_title}>Океанские волны</Text>
@@ -45,7 +44,7 @@ export default function Audio() {
                         <div className='audio-card' style={styles.card}>
 
                             {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/fireplace_3d.png')} style={{ ...styles.card_pic, scale: '90%', marginLeft: '3px' }} onClick={() => router.push('/audio/player_2')} />
+                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/fireplace_3d.png')} style={{ ...styles.card_pic, scale: '90%', marginLeft: '3px' }} onClick={() => router.push('/audio/_players/player_2')} />
 
                             {/* Card Title */}
                             <Text style={styles.card_title}>Уютный камин</Text>
@@ -65,14 +64,14 @@ export default function Audio() {
                     {/* Title */}
                     <Text style={styles.group_title}>Музыка</Text>
 
-                    {/* Cards List 1 */}
+                    {/* Cards List 2 */}
                     <div className='cards-list' style={{ display: 'flex', gap: '20px' }}>
 
-                        {/* Card ОТДЕЛЬНЫЙ КОМПОНЕНТ */}
-                        <div className='audio-card' style={styles.card} >
+                        {/* ДЕРЕВО */}
+                        <div className='audio-card' style={styles.card} onClick={() => router.push('/audio/_players/player_3')} >
 
                             {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/tree_3d.png')} style={styles.card_pic} />
+                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/tree_3d.png')} style={styles.card_pic} />
 
                             {/* Card Title */}
                             <Text style={styles.card_title}>Лесные деревья</Text>
@@ -82,11 +81,11 @@ export default function Audio() {
 
                         </div>
 
-                        {/* Card 2 */}
+                        {/* ОКНО */}
                         <div className='audio-card' style={styles.card}>
 
                             {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/window_3d.png')} style={{ ...styles.card_pic, scale: '90%' }} />
+                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/window_3d.png')} style={{ ...styles.card_pic, scale: '90%' }} />
 
                             {/* Card Title */}
                             <Text style={styles.card_title}>Дождь</Text>
@@ -101,9 +100,6 @@ export default function Audio() {
                 </div>
 
             </ImageBackground>
-
-            {/* Nav Bar */}
-            <NavBar />
 
         </SafeAreaView>
 

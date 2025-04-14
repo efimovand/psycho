@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View } from "react-native";
-import NavBar from '../nav_bar';
 import { GrFormNext } from "react-icons/gr";
 
 
@@ -12,7 +11,7 @@ export default function Profile() {
         <SafeAreaView style={styles.container}>
 
             {/* Info Content */}
-            <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
 
                 {/* Title + Sort */}
                 <View style={{ display: 'flex', flexDirection: 'row', gap: '25px', justifyContent: 'center', alignItems: 'center', marginTop: '35px' }}>
@@ -43,9 +42,6 @@ export default function Profile() {
                 </View>
 
             </ImageBackground>
-
-            {/* Nav Bar */}
-            <NavBar />
 
         </SafeAreaView>
 

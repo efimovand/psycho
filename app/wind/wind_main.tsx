@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View } from "react-native";
 import { useRouter } from 'expo-router';
-import NavBar from '../nav_bar';
 import { IoFilter } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
 
@@ -16,7 +15,7 @@ export default function Wind() {
         <SafeAreaView style={styles.container}>
 
             {/* Wind Content */}
-            <ImageBackground source={require('../../assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
 
                 {/* Title + Sort */}
                 <View style={{ display: 'flex', flexDirection: 'row', gap: '25px', justifyContent: 'center', alignItems: 'center', marginTop: '35px' }}>
@@ -39,7 +38,7 @@ export default function Wind() {
                             {/* Card Pic + Time */}
                             <View style={{ display: 'flex', flexDirection: 'row' }}>
 
-                                <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/lion.png')} style={styles.card_pic} />
+                                <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/lion.png')} style={styles.card_pic} />
 
                                 <View style={{ display: 'flex', flexDirection: 'row', gap: '2px', justifyContent: 'center', alignItems: 'center', position: 'relative', bottom: '25px', right: '5px' }}>
                                     <Text style={{ fontSize: '20px', fontWeight: 'bold', color: '#013B3C' }}>30</Text>
@@ -62,7 +61,7 @@ export default function Wind() {
                             {/* Card Pic + Time */}
                             <View style={{ display: 'flex', flexDirection: 'row' }}>
 
-                                <Image className='audio-card-pic' alt='Audio Card' source={require('../../assets/images/wave.png')} style={styles.card_pic} />
+                                <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/wave.png')} style={styles.card_pic} />
 
                                 <View style={{ display: 'flex', flexDirection: 'row', gap: '2px', justifyContent: 'center', alignItems: 'center', position: 'relative', bottom: '25px', right: '5px' }}>
                                     <Text style={{ fontSize: '20px', fontWeight: 'bold', color: '#013B3C' }}>45</Text>
@@ -122,9 +121,6 @@ export default function Wind() {
                 </div>
 
             </ImageBackground>
-
-            {/* Nav Bar */}
-            <NavBar />
 
         </SafeAreaView>
 

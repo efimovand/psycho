@@ -1,11 +1,18 @@
-import { Stack } from "expo-router";
+import { Tabs } from 'expo-router';
+import CustomTabBar from '../components/tab_bar';
 
 
-export default function RootLayout() {
+export default function AppLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="home" options={{ title: 'Home' }} />
-      <Stack.Screen name="sos_start" options={{ title: 'SOS Start' }} />
-    </Stack>
-  )
+    <Tabs
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
+      <Tabs.Screen name="home" />
+      <Tabs.Screen name="wind" />
+      <Tabs.Screen name="audio" />
+      <Tabs.Screen name="info" />
+      <Tabs.Screen name="profile" />
+    </Tabs>
+  );
 }
