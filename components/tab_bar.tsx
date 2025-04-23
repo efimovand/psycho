@@ -1,101 +1,75 @@
 import React from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, Pressable, StyleSheet, Image } from 'react-native';
 import { usePathname } from 'expo-router';
-
-import { BiWind } from 'react-icons/bi';
-import { IoMusicalNotes } from 'react-icons/io5';
-import { FaListUl } from 'react-icons/fa';
-import { FaUserLarge } from 'react-icons/fa6';
-import { IoMdHome } from 'react-icons/io';
 
 
 export default function CustomTabBar({ state, navigation }) {
-
     const currentTab = state.index;
     const pathname = usePathname();
 
-    {/* Экраны, где TabBar скрыт */ }
     if (
         pathname.includes('/_sos_screens') ||
-        pathname.includes('/_players')
-    ) return null
+        pathname.includes('/_players') ||
+        pathname.includes('/_practices')
+    ) return null;
+
+    const buttons = [
+        { icon: require('../assets/images/tabs/info.png'), route: 'info' },
+        { icon: require('../assets/images/tabs/practice.png'), route: 'practice' },
+        { icon: require('../assets/images/tabs/home.png'), route: 'home' },
+        { icon: require('../assets/images/tabs/audio.png'), route: 'audio' },
+        { icon: require('../assets/images/tabs/profile.png'), route: 'profile' },
+    ];
 
     return (
 
         <View style={styles.navBar}>
 
-            {/* Wind */}
-            <Pressable onPress={() => navigation.navigate('wind')}>
-                <BiWind size={52} color={currentTab === 1 ? '#EEA3A1' : 'white'} />
-            </Pressable>
-
-            <View style={styles.navBarSeparator} />
-
-            {/* Audio */}
-            <Pressable onPress={() => navigation.navigate('audio')}>
-                <IoMusicalNotes size={52} color={currentTab === 2 ? '#EEA3A1' : 'white'} style={{ scale: '98%' }} />
-            </Pressable>
-
-            {/* Home */}
-            <Pressable style={styles.tabHomeBg} onPress={() => navigation.navigate('home')}>
-                <IoMdHome size={62} color={currentTab === 0 ? '#EEA3A1' : 'white'} style={{ marginBottom: '6px', marginLeft: '1px' }} />
-            </Pressable>
-
-            {/* Info */}
-            <Pressable onPress={() => navigation.navigate('info')}>
-                <FaListUl size={52} color={currentTab === 3 ? '#EEA3A1' : 'white'} style={{ scale: '88%' }} />
-            </Pressable>
-
-            <View style={styles.navBarSeparator} />
-
-            {/* Profile */}
-            <Pressable onPress={() => navigation.navigate('profile')}>
-                <FaUserLarge size={52} color={currentTab === 4 ? '#EEA3A1' : 'white'} style={{ scale: '85%' }} />
-            </Pressable>
+            {buttons.map((btn, index) => (
+                <Pressable key={btn.route} onPress={() => navigation.navigate(btn.route)} style={[styles.circleButton, currentTab === index && styles.activeButton]}>
+                    <Image
+                        source={btn.icon}
+                        style={{
+                            tintColor: currentTab === index ? '#EEA3A1' : 'white',
+                            width: 30,
+                            height: 30
+                        }}
+                    />
+                </Pressable>
+            ))}
 
         </View>
 
     );
 }
 
-
-{/* Styles */ }
 const styles = StyleSheet.create({
 
     navBar: {
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        gap: 10,
-        backgroundColor: '#114656',
-        height: 70,
-        width: '100%',
-        borderTopWidth: 2,
-        borderTopColor: 'rgba(255, 255, 255, 0.6)',
+        position: 'absolute',
+        bottom: 40,
+        left: 0,
+        right: 0,
+        backgroundColor: 'transparent',
+        paddingHorizontal: 25,
+        height: 50,
+        zIndex: 10,
     },
 
-    navBarSeparator: {
-        height: 40,
-        width: 1,
-        backgroundColor: '#FFFFFF',
-        margin: 5,
-    },
-
-    tabIcon: {
+    circleButton: {
+        backgroundColor: '#486419',
         width: 52,
         height: 52,
-        color: 'white',
-    },
-
-    tabHomeBg: {
+        borderRadius: '50%',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 80,
-        width: 80,
-        backgroundColor: '#013B3C',
-        borderRadius: '50%',
-        marginBottom: 35,
-        boxShadow: 'inset 0 0 0 2px rgba(255, 255, 255, 0.4)'
+    },
+
+    activeButton: {
+        backgroundColor: '#5A825D',
     },
 
 });

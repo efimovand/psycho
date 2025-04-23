@@ -17,7 +17,7 @@ export default function SOS_final() {
                 {/* Overlay Color Layer */}
                 <View style={styles.overlay}>
 
-                    <View style={{ width: '355px' }}>
+                    <View style={{ width: 355 }}>
 
                         <Text style={styles.title}>
                             Ты молодец! Ты справился!
@@ -32,7 +32,7 @@ export default function SOS_final() {
                     </View>
 
                     <TouchableOpacity style={styles.nextBtn} onPress={() => router.push('/home')}>
-                        <Text style={{ fontSize: '18px', color: 'white' }}>На главную</Text>
+                        <Text style={{ fontSize: 18, color: 'white' }}>На главную</Text>
                     </TouchableOpacity>
 
                 </View>

@@ -19,13 +19,14 @@ export default function SOS_3_2() {
                 {/* Overlay Color Layer */}
                 <View style={styles.overlay}>
 
-                    <View className='navigation' style={{ position: 'absolute', top: '0', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: '15px', alignItems: 'center' }}>
-                        <IoClose style={{ height: '30px', width: '30px', color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: '20px', fontWeight: 'bold', color: '#BDBDB9' }}>3/5</Text>
+                    {/* Close + № */}
+                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
+                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>3/5</Text>
                     </View>
 
                     {/* Text */}
-                    <View className='content' style={{ width: '355px' }}>
+                    <View className='content' style={{ width: 355 }}>
 
                         <Text style={styles.title}>
                             Твой якорь в настоящем моменте
@@ -49,7 +50,7 @@ export default function SOS_3_2() {
 
                     {/* Next Btn */}
                     <TouchableOpacity style={styles.nextBtn} onPress={() => router.push('/home/_sos_screens/sos_4_1')}>
-                        <Text style={{ fontSize: '18px', color: 'white' }}>Продолжить</Text>
+                        <Text style={{ fontSize: 18, color: 'white' }}>Продолжить</Text>
                     </TouchableOpacity>
 
                 </View>

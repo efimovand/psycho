@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View } from "react-native";
 import { useRouter } from 'expo-router';
+import AudioCard from '@/components/audio_card';
 
 
 export default function Audio() {
@@ -13,87 +14,76 @@ export default function Audio() {
         <SafeAreaView style={styles.container}>
 
             {/* Audio Content */}
-            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={3} style={styles.imageBackground}>
 
                 {/* ОТДЕЛЬНЫЕ КОМПОНЕНТЫ! С параметрами title и список cards */}
 
                 {/* Audio Group 1 */}
-                <div className='audio-group' style={{ ...styles.audio_group, marginTop: '30px' }}>
+                <div className='audio-group' style={{ ...styles.audio_group, marginTop: 30 }}>
 
                     {/* Title */}
                     <Text style={styles.group_title}>Звуки</Text>
 
-                    {/* Cards List */}
-                    <div className='cards-list' style={{ display: 'flex', gap: '20px' }}>
+                    {/* Cards List 1 */}
+                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
 
-                        {/* Card ОТДЕЛЬНЫЙ КОМПОНЕНТ */}
-                        <div className='audio-card' style={styles.card}>
-
-                            {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/wave.png')} style={styles.card_pic} onClick={() => router.push('/audio/_players/player_1')} />
-
-                            {/* Card Title */}
-                            <Text style={styles.card_title}>Океанские волны</Text>
-
-                            {/* Card Description */}
-                            <Text style={styles.card_desc}>здесь описание/инфа</Text>
-
-                        </div>
+                        {/* Card 1 */}
+                        <AudioCard
+                            title="Океанские волны"
+                            description="величественное море"
+                            image={require('@/assets/images/sounds_icons/wave_3d.png')}
+                            navigateTo="/audio/_players/player_sea"
+                        />
 
                         {/* Card 2 */}
-                        <div className='audio-card' style={styles.card}>
-
-                            {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/fireplace_3d.png')} style={{ ...styles.card_pic, scale: '90%', marginLeft: '3px' }} onClick={() => router.push('/audio/_players/player_2')} />
-
-                            {/* Card Title */}
-                            <Text style={styles.card_title}>Уютный камин</Text>
-
-                            {/* Card Description */}
-                            <Text style={styles.card_desc}>здесь описание/инфа</Text>
-
-                        </div>
+                        <AudioCard
+                            title="Весенний лес"
+                            description="щебет птиц, движение"
+                            image={require('@/assets/images/sounds_icons/tree_3d.png')}
+                            navigateTo="/audio/_players/player_forest"
+                        />
 
                     </div>
 
-                </div>
-
-                {/* Audio Group 2 */}
-                <div className='audio-group' style={styles.audio_group}>
-
-                    {/* Title */}
-                    <Text style={styles.group_title}>Музыка</Text>
-
                     {/* Cards List 2 */}
-                    <div className='cards-list' style={{ display: 'flex', gap: '20px' }}>
+                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
 
-                        {/* ДЕРЕВО */}
-                        <div className='audio-card' style={styles.card} onClick={() => router.push('/audio/_players/player_3')} >
+                        {/* Card 3 */}
+                        <AudioCard
+                            title="Гроза"
+                            description="весенняя гроза"
+                            image={require('@/assets/images/sounds_icons/thunderstorm_3d.png')}
+                            navigateTo="/audio/_players/player_thunderstorm"
+                        />
 
-                            {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/tree_3d.png')} style={styles.card_pic} />
+                        {/* Card 4 */}
+                        <AudioCard
+                            title="Дождь"
+                            description="капли дождя за окном"
+                            image={require('@/assets/images/sounds_icons/window_3d.png')}
+                            navigateTo="/audio/_players/player_rain"
+                        />
 
-                            {/* Card Title */}
-                            <Text style={styles.card_title}>Лесные деревья</Text>
+                    </div>
 
-                            {/* Card Description */}
-                            <Text style={styles.card_desc}>здесь описание/инфа</Text>
+                    {/* Cards List 3 */}
+                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
 
-                        </div>
+                        {/* Card 5 */}
+                        <AudioCard
+                            title="Ночной лес"
+                            description="сверчки и спокойствие"
+                            image={require('@/assets/images/sounds_icons/night_3d.png')}
+                            navigateTo="/audio/_players/player_nightForest"
+                        />
 
-                        {/* ОКНО */}
-                        <div className='audio-card' style={styles.card}>
-
-                            {/* Card Pic */}
-                            <Image className='audio-card-pic' alt='Audio Card' source={require('@/assets/images/window_3d.png')} style={{ ...styles.card_pic, scale: '90%' }} />
-
-                            {/* Card Title */}
-                            <Text style={styles.card_title}>Дождь</Text>
-
-                            {/* Card Description */}
-                            <Text style={styles.card_desc}>здесь описание/инфа</Text>
-
-                        </div>
+                        {/* Card 6 */}
+                        <AudioCard
+                            title="Ручей"
+                            description="журчание быстрого ручья"
+                            image={require('@/assets/images/sounds_icons/stream_3d.png')}
+                            navigateTo="/audio/_players/player_stream"
+                        />
 
                     </div>
 
@@ -101,7 +91,7 @@ export default function Audio() {
 
             </ImageBackground>
 
-        </SafeAreaView>
+        </SafeAreaView >
 
     );
 
@@ -146,7 +136,8 @@ export const styles = StyleSheet.create({
         width: 165,
         backgroundColor: 'rgba(255, 255, 255, 0.6)',
         borderRadius: 20,
-        border: '1px solid white'
+        borderWidth: 1,
+        borderColor: 'white'
     },
 
     card_title: {

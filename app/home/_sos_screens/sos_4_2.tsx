@@ -21,21 +21,22 @@ export default function SOS_4_2() {
                 {/* Overlay Color Layer */}
                 <View style={styles.overlay}>
 
-                    <View className='navigation' style={{ position: 'absolute', top: '0', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: '15px', alignItems: 'center' }}>
-                        <IoClose style={{ height: '30px', width: '30px', color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: '20px', fontWeight: 'bold', color: '#BDBDB9' }}>4/5</Text>
+                    {/* Close + № */}
+                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
+                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>4/5</Text>
                     </View>
 
                     {/* Text */}
-                    <View className='content' style={{ width: '345px' }}>
+                    <View className='content' style={{ width: 345 }}>
 
                         <Text style={styles.title}>
                             5 органов чувств
                         </Text>
 
-                        <View className='nose' style={{ marginBottom: '70px' }}>
+                        <View className='nose' style={{ marginBottom: 70 }}>
 
-                            <View style={{ display: 'flex', flexDirection: 'row', gap: '18px', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+                            <View style={{ display: 'flex', flexDirection: 'row', gap: 18, justifyContent: 'center', alignItems: 'center', marginBottom: 15 }}>
                                 <GiNoseFront style={styles.itemsTemplate} />
                                 <Text style={{ color: '#fff', fontSize: 24, zIndex: 1, fontWeight: 'bold' }}>Обоняние</Text>
                             </View>
@@ -48,8 +49,8 @@ export default function SOS_4_2() {
 
                         <View className='tongue' >
 
-                            <View style={{ display: 'flex', flexDirection: 'row', gap: '18px', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
-                                <GiTongue style={{ ...styles.itemsTemplate, marginTop: '6px' }} />
+                            <View style={{ display: 'flex', flexDirection: 'row', gap: 18, justifyContent: 'center', alignItems: 'center', marginBottom: 15 }}>
+                                <GiTongue style={{ ...styles.itemsTemplate, marginTop: 6 }} />
                                 <Text style={{ color: '#fff', fontSize: 24, zIndex: 1, fontWeight: 'bold' }}>Вкус</Text>
                             </View>
 
@@ -65,7 +66,7 @@ export default function SOS_4_2() {
 
                     {/* Next Btn */}
                     <TouchableOpacity style={styles.nextBtn} onPress={() => router.push('/home/_sos_screens/sos_final')}>
-                        <Text style={{ fontSize: '18px', color: 'white' }}>Продолжить</Text>
+                        <Text style={{ fontSize: 18, color: 'white' }}>Продолжить</Text>
                     </TouchableOpacity>
 
                 </View>

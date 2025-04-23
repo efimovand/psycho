@@ -22,21 +22,22 @@ export default function SOS_4_1() {
                 {/* Overlay Color Layer */}
                 <View style={styles.overlay}>
 
-                    <View className='navigation' style={{ position: 'absolute', top: '0', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: '15px', alignItems: 'center' }}>
-                        <IoClose style={{ height: '30px', width: '30px', color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: '20px', fontWeight: 'bold', color: '#BDBDB9' }}>4/5</Text>
+                    {/* Close + № */}
+                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
+                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>4/5</Text>
                     </View>
 
                     {/* Text */}
-                    <View className='content' style={{ width: '355px' }}>
+                    <View className='content' style={{ width: 355 }}>
 
                         <Text style={styles.title}>
                             5 органов чувств
                         </Text>
 
-                        <View className='eye' style={{ marginBottom: '40px' }}>
+                        <View className='eye' style={{ marginBottom: 40 }}>
 
-                            <View style={{ display: 'flex', flexDirection: 'row', gap: '18px', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+                            <View style={{ display: 'flex', flexDirection: 'row', gap: 18, justifyContent: 'center', alignItems: 'center', marginBottom: 15 }}>
                                 <FaRegEye style={styles.itemsTemplate} />
                                 <Text style={{ color: '#fff', fontSize: 24, zIndex: 1, fontWeight: 'bold' }}>Зрение</Text>
                             </View>
@@ -49,9 +50,9 @@ export default function SOS_4_1() {
 
                         </View>
 
-                        <View className='ear' style={{ marginBottom: '40px' }}>
+                        <View className='ear' style={{ marginBottom: 40 }}>
 
-                            <View style={{ display: 'flex', flexDirection: 'row', gap: '18px', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+                            <View style={{ display: 'flex', flexDirection: 'row', gap: 18, justifyContent: 'center', alignItems: 'center', marginBottom: 15 }}>
                                 <MdHearing style={styles.itemsTemplate} />
                                 <Text style={{ color: '#fff', fontSize: 24, zIndex: 1, fontWeight: 'bold' }}>Слух</Text>
                             </View>
@@ -66,7 +67,7 @@ export default function SOS_4_1() {
 
                         <View className='touch'>
 
-                            <View style={{ display: 'flex', flexDirection: 'row', gap: '18px', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+                            <View style={{ display: 'flex', flexDirection: 'row', gap: 18, justifyContent: 'center', alignItems: 'center', marginBottom: 15 }}>
                                 <FaHand style={{ ...styles.itemsTemplate, scale: '80%' }} />
                                 <Text style={{ color: '#fff', fontSize: 24, zIndex: 1, fontWeight: 'bold' }}>Осязание</Text>
                             </View>
@@ -85,7 +86,7 @@ export default function SOS_4_1() {
 
                     {/* Next Btn */}
                     <TouchableOpacity style={styles.nextBtn} onPress={() => router.push('/home/_sos_screens/sos_4_2')}>
-                        <Text style={{ fontSize: '18px', color: 'white' }}>Далее</Text>
+                        <Text style={{ fontSize: 18, color: 'white' }}>Далее</Text>
                     </TouchableOpacity>
 
                 </View>

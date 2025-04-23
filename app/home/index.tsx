@@ -1,61 +1,80 @@
 import React, { useRef } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, ImageBackground, TouchableOpacity, Animated, TouchableWithoutFeedback, Image } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, ImageBackground, Image, Pressable } from "react-native";
 import { useRouter } from 'expo-router';
+import { Svg, Defs, Filter, FeTurbulence, FeComposite, Rect } from 'react-native-svg';
+
+
+const NoiseBackground = () => (
+  <Svg height="100%" width="100%" style={{ position: 'absolute' }}>
+    <Defs>
+      <Filter id="noise">
+        <FeTurbulence
+          type="fractalNoise"
+          baseFrequency="1.5"
+          numOctaves="3"
+          stitchTiles="stitch"
+        />
+        <FeComposite in="SourceGraphic" operator="in" />
+      </Filter>
+    </Defs>
+    <Rect
+      width="100%"
+      height="100%"
+      filter="url(#noise)"
+      opacity="0.3"
+      fill="white"
+    />
+  </Svg>
+);
 
 
 export default function Home() {
 
   const router = useRouter();
 
-  {/* Affiramtion Widget */ }
-  const affirmation_text_up = 'тут текст аффирмации';
-  const affirmation_text_down = 'тут еще текст аффирмации';
-
-  {/* Affiramtion's' Animation */ }
-  const translateY = useRef(new Animated.Value(0)).current;
-
-  const moveAffirmationUp = () => {
-    Animated.timing(translateY, {
-      toValue: -100,
-      duration: 600,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const moveAffirmationDown = () => {
-    Animated.timing(translateY, {
-      toValue: 0,
-      duration: 700,
-      useNativeDriver: true,
-    }).start();
-  };
-
 
   return (
 
     <SafeAreaView style={styles.container}>
 
-      {/* Home Content */}
-      <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground} onClick={moveAffirmationDown}>
+      <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" style={styles.imageBackground}>
 
-        {/* SOS Button */}
-        <TouchableOpacity style={styles.sos_btn} onPress={() => router.push('/home/_sos_screens/sos_start')}>
-          <View style={{ ...styles.sos_btn, width: 170, height: 170 }}>
-            <Text style={styles.text_sos_btn}>SOS</Text>
+        {/* Home Content */}
+        <View style={{ display: 'flex', gap: 85, justifyContent: 'center', alignItems: 'center' }}>
+
+          {/* SOS Button */}
+          <View style={styles.sosContainer}>
+
+            {/* Title */}
+            <Image source={require('@/assets/images/sos_title.png')} style={{ height: 60, width: 120 }} />
+
+            {/* Button */}
+            <Pressable onPress={() => router.push('/home/_sos_screens/sos_start')}>
+              <Image source={require('@/assets/images/sos.png')} style={{ height: 230, width: 230 }} />
+            </Pressable>
+
           </View>
-        </TouchableOpacity>
 
-        {/* Affirmation Widget */}
-        <TouchableWithoutFeedback onPress={moveAffirmationUp}>
-          <Animated.View style={[styles.affirmationContainer, { transform: [{ translateY }] },]} >
-            <View style={styles.affirmationPart}>
-              <Text style={styles.affirmationText}>{affirmation_text_up}</Text>
+          {/* Affirmation */}
+          <View style={styles.affirmationContainer}>
+
+            <NoiseBackground />
+
+            {/* Exclamation */}
+            <View style={{ width: 60, display: 'flex', gap: 2, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 8, height: 30, backgroundColor: 'white' }} />
+              <View style={{ width: 9, height: 9, borderRadius: '50%', backgroundColor: 'white' }} />
             </View>
-            <View style={styles.affirmationPart}>
-              <Text style={styles.affirmationText}>{affirmation_text_down}</Text>
-            </View>
-          </Animated.View>
-        </TouchableWithoutFeedback>
+
+            {/* Line */}
+            <View style={{ height: 55, width: 2, backgroundColor: 'white' }} />
+
+            {/* Text */}
+            <Text style={{ height: '100%', width: '100%', paddingHorizontal: 12, paddingVertical: 10, fontSize: 14, color: '#465327' }}>Я сделаю сегодня что-то приятное для себя, потому что я ценю себя и заслуживаю радости.</Text>
+
+          </View>
+
+        </View>
 
       </ImageBackground>
 
@@ -85,43 +104,24 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-  sos_btn: {
+  sosContainer: {
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    backgroundColor: '#408F9E',
-    boxShadow: 'inset 0 0 0 3px rgba(255, 255, 255, 0.4)',
-  },
-
-  text_sos_btn: {
-    fontSize: 64,
-    color: '#FFFFFF',
+    gap: 50
   },
 
   affirmationContainer: {
-    position: 'absolute',
-    bottom: -70,
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    gap: 15,
-    height: 315,
-    backgroundColor: 'transparent',
-  },
-
-  affirmationPart: {
-    height: 100,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    height: 90,
     width: 315,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
     borderRadius: 20,
-    boxShadow: 'inset 0 0 0 2px rgba(255, 255, 255, 0.8)',
-  },
-
-  affirmationText: {
-    color: '#408F9E',
-    fontSize: 20,
-  },
+    borderWidth: 3,
+    borderColor: 'rgba(255, 255, 255, 0.4)',
+    overflow: 'hidden',
+  }
 
 });

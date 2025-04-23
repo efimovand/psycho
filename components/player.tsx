@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View, TouchableOpacity, Animated } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Image, ImageBackground, View, Pressable, Animated, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Audio } from 'expo-av'; // Импортируем библиотеку для работы с аудио
-
+import { Audio } from 'expo-av';
+import BreathCircle from '@/components/breath_circle';
 import { FaPause, FaPlay } from 'react-icons/fa6';
 import { TbPlayerTrackNext } from 'react-icons/tb';
 import { TbPlayerTrackPrev } from 'react-icons/tb';
@@ -22,8 +22,9 @@ const Player: React.FC<PlayerProps> = ({ image, title, audioSource }) => {
 
     const [sound, setSound] = useState<Audio.Sound | null>(null); // Для хранения объекта звука
     const [isPlaying, setIsPlaying] = useState<boolean>(false); // Состояние воспроизведения
-    const [isLoading, setIsLoading] = useState<boolean>(false); // Состояние загрузки
+    const [isLoading, setIsLoading] = useState<boolean>(true); // Состояние загрузки
 
+    // Управление воспроизведением
     useFocusEffect(
         useCallback(() => {
             let soundInstance: Audio.Sound;
@@ -35,6 +36,9 @@ const Player: React.FC<PlayerProps> = ({ image, title, audioSource }) => {
                 );
                 soundInstance = sound;
                 setSound(sound);
+                await sound.playAsync(); // Автоматический старт
+                setIsPlaying(true); // Обновление состояния плеера
+                setIsLoading(false); // Загрузка завершена
             };
 
             loadAudio();
@@ -47,7 +51,6 @@ const Player: React.FC<PlayerProps> = ({ image, title, audioSource }) => {
             };
         }, [audioSource])
     );
-
 
     // Кнопка Play/Pause
     const opacity = useRef<Animated.Value>(new Animated.Value(1)).current;
@@ -80,12 +83,11 @@ const Player: React.FC<PlayerProps> = ({ image, title, audioSource }) => {
 
     };
 
-    // Навигация
+    // Navigation
     const handleNext = () => {
         setIsPlaying(false);
         router.push('/audio/audio_main');
     };
-
     const handlePrev = () => {
         setIsPlaying(false);
         router.push('/audio/audio_main');
@@ -96,39 +98,48 @@ const Player: React.FC<PlayerProps> = ({ image, title, audioSource }) => {
 
         <SafeAreaView style={styles.container}>
 
-            <ImageBackground source={image} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={image} resizeMode="cover" blurRadius={2} style={styles.imageBackground}>
+
+                {/* Loader */}
+                {isLoading && (
+                    <View style={styles.loaderOverlay}>
+                        <ActivityIndicator size="large" color="#fff" />
+                    </View>
+                )}
 
                 <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
 
+                    {/* Title */}
                     <View style={styles.titleContainer}>
-                        <Text style={styles.title}>{title}</Text>
+                        <Text style={styles.title} numberOfLines={1} >{title}</Text>
                     </View>
 
-                    {/* GIF или картинка, которая иллюстрирует воспроизведение */}
-                    <Image source={require('@/assets/images/sound_circle.gif')} style={styles.image} />
+                    {/* Breath Circle */}
+                    <BreathCircle />
 
-                    {/* Контролы плеера */}
+                    {/* Controls */}
                     <View style={styles.controlContainer}>
 
-                        <TouchableOpacity onPress={handlePrev}>
+                        {/* Prev Sound */}
+                        <Pressable onPress={handlePrev}>
                             <TbPlayerTrackPrev style={styles.controlIcon} />
-                        </TouchableOpacity>
+                        </Pressable>
 
-                        {/* Кнопка Play/Pause */}
-                        <TouchableOpacity onPress={handlePlayPause} style={styles.playPauseBtn}>
+                        {/* Play/Pause */}
+                        <Pressable onPress={handlePlayPause} style={styles.playPauseBtn}>
                             <Animated.View style={{ opacity }}>
                                 {isPlaying ? (
                                     <FaPause style={styles.icon} />
                                 ) : (
-                                    <FaPlay style={styles.icon} />
+                                    <FaPlay style={{ ...styles.icon, scale: '95%', marginLeft: 4 }} />
                                 )}
                             </Animated.View>
-                        </TouchableOpacity>
+                        </Pressable>
 
-
-                        <TouchableOpacity onPress={handleNext}>
+                        {/* Next Sound */}
+                        <Pressable onPress={handleNext}>
                             <TbPlayerTrackNext style={styles.controlIcon} />
-                        </TouchableOpacity>
+                        </Pressable>
 
                     </View>
 
@@ -157,6 +168,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: '100%',
         width: '100%',
+    },
+
+    loaderOverlay: {
+        ...StyleSheet.absoluteFillObject,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 10,
+        backgroundColor: '#FBE383'
     },
 
     titleContainer: {

@@ -11,32 +11,32 @@ export default function Profile() {
         <SafeAreaView style={styles.container}>
 
             {/* Info Content */}
-            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={4} style={styles.imageBackground}>
+            <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={3} style={styles.imageBackground}>
 
                 {/* Title + Sort */}
-                <View style={{ display: 'flex', flexDirection: 'row', gap: '25px', justifyContent: 'center', alignItems: 'center', marginTop: '35px' }}>
-                    <Text style={{ fontSize: '26px', fontWeight: 'bold', color: '#013B3C' }}>Профиль</Text>
+                <View style={{ display: 'flex', flexDirection: 'row', gap: 25, justifyContent: 'center', alignItems: 'center', marginTop: 35 }}>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#013B3C' }}>Профиль</Text>
                 </View>
 
                 {/* Tabs */}
-                <View style={{ display: 'flex', gap: '2px', width: '100%' }}>
+                <View style={{ display: 'flex', gap: 2, width: '100%' }}>
 
                     {/* Tab 1 (ОТДЕЛЬНЫЙ КОМПОНЕНТ) */}
                     <View style={styles.tab_bg}>
                         <Text style={styles.tab_title}>Раздел</Text>
-                        <GrFormNext style={{ height: '50px', width: '50px', color: '#013B3C' }} />
+                        <GrFormNext style={{ height: 50, width: 50, color: '#013B3C' }} />
                     </View>
 
                     {/* Tab 2 (ОТДЕЛЬНЫЙ КОМПОНЕНТ) */}
                     <View style={styles.tab_bg}>
                         <Text style={styles.tab_title}>Еще раздел</Text>
-                        <GrFormNext style={{ height: '50px', width: '50px', color: '#013B3C' }} />
+                        <GrFormNext style={{ height: 50, width: 50, color: '#013B3C' }} />
                     </View>
 
                     {/* Tab 3 (ОТДЕЛЬНЫЙ КОМПОНЕНТ) */}
                     <View style={styles.tab_bg}>
                         <Text style={styles.tab_title}>Третий раздел</Text>
-                        <GrFormNext style={{ height: '50px', width: '50px', color: '#013B3C' }} />
+                        <GrFormNext style={{ height: 50, width: 50, color: '#013B3C' }} />
                     </View>
 
                 </View>

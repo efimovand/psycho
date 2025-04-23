@@ -8,10 +8,10 @@ export default function AppLayout() {
       tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{ headerShown: false }}
     >
-      <Tabs.Screen name="home" />
-      <Tabs.Screen name="wind" />
-      <Tabs.Screen name="audio" />
       <Tabs.Screen name="info" />
+      <Tabs.Screen name="practice" />
+      <Tabs.Screen name="home" />
+      <Tabs.Screen name="audio" />
       <Tabs.Screen name="profile" />
     </Tabs>
   );
