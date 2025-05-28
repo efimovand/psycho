@@ -1,8 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, Text, View, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
-
-import { IoClose } from "react-icons/io5";
+import UpperSOSNavigation from './upper_navigation';
 
 
 export default function SOS_1() {
@@ -21,11 +20,9 @@ export default function SOS_1() {
 
 
                     {/* Close + № */}
-                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
-                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>1/5</Text>
-                    </View>
+                    <UpperSOSNavigation number='1' />
 
+                    {/* Content */}
                     <View className='text' style={{ width: 355 }}>
 
                         <Text style={styles.title}>

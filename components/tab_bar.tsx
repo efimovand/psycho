@@ -29,11 +29,8 @@ export default function CustomTabBar({ state, navigation }) {
                 <Pressable key={btn.route} onPress={() => navigation.navigate(btn.route)} style={[styles.circleButton, currentTab === index && styles.activeButton]}>
                     <Image
                         source={btn.icon}
-                        style={{
-                            tintColor: currentTab === index ? '#EEA3A1' : 'white',
-                            width: 30,
-                            height: 30
-                        }}
+                        tintColor={currentTab === index ? '#EEA3A1' : 'white'}
+                        style={styles.tabPic}
                     />
                 </Pressable>
             ))}
@@ -71,5 +68,10 @@ const styles = StyleSheet.create({
     activeButton: {
         backgroundColor: '#5A825D',
     },
+
+    tabPic: {
+        height: 30,
+        width: 30,
+    }
 
 });

@@ -4,7 +4,7 @@ import { View, StyleSheet, Animated } from 'react-native';
 
 const BreathCircle: React.FC = () => {
 
-    // Создаем два Animated.Value для радиусов внешнего и внутреннего кругов
+    // Внешний и внутренний круги
     const outerCircleScale = useRef(new Animated.Value(1)).current;
     const innerCircleScale = useRef(new Animated.Value(1)).current;
 
@@ -37,7 +37,7 @@ const BreathCircle: React.FC = () => {
                     }),
                 ]),
             ]),
-            { iterations: -1 } // Бесконечное повторение
+            { iterations: -1 }
         ).start();
     }, []);
 

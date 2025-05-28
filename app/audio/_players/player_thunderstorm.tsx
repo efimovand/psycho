@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text } from 'react-native';
-import Player from '@/components/player'; // Импортируем компонент плеера
+import Player from '@/components/player';
 
 
 {/* Thunderstorm */ }

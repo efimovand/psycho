@@ -16,16 +16,14 @@ export default function Audio() {
             {/* Audio Content */}
             <ImageBackground source={require('@/assets/images/bg.jpg')} resizeMode="cover" blurRadius={3} style={styles.imageBackground}>
 
-                {/* ОТДЕЛЬНЫЕ КОМПОНЕНТЫ! С параметрами title и список cards */}
-
-                {/* Audio Group 1 */}
-                <div className='audio-group' style={{ ...styles.audio_group, marginTop: 30 }}>
+                {/* Audio Group */}
+                <View className='audio-group' style={{ ...styles.audio_group, marginTop: 30 }}>
 
                     {/* Title */}
                     <Text style={styles.group_title}>Звуки</Text>
 
-                    {/* Cards List 1 */}
-                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
+                    {/* Cards List Upper */}
+                    <View className='cards-list' style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
 
                         {/* Card 1 */}
                         <AudioCard
@@ -43,10 +41,10 @@ export default function Audio() {
                             navigateTo="/audio/_players/player_forest"
                         />
 
-                    </div>
+                    </View>
 
-                    {/* Cards List 2 */}
-                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
+                    {/* Cards List Middle */}
+                    <View className='cards-list' style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
 
                         {/* Card 3 */}
                         <AudioCard
@@ -64,10 +62,10 @@ export default function Audio() {
                             navigateTo="/audio/_players/player_rain"
                         />
 
-                    </div>
+                    </View>
 
-                    {/* Cards List 3 */}
-                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
+                    {/* Cards List Lower */}
+                    <View className='cards-list' style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
 
                         {/* Card 5 */}
                         <AudioCard
@@ -85,9 +83,9 @@ export default function Audio() {
                             navigateTo="/audio/_players/player_stream"
                         />
 
-                    </div>
+                    </View>
 
-                </div>
+                </View>
 
             </ImageBackground>
 

@@ -11,9 +11,9 @@ import BreathCircle from '@/components/breath_circle';
 
 
 interface PracticeProps {
-    image: string; // Путь к изображению фона
-    time: number; // Время
-    audioSource: string; // Путь к звуковому файлу
+    image: string;
+    time: number;
+    audioSource: string;
 }
 
 

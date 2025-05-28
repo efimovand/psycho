@@ -10,9 +10,9 @@ import { TbPlayerTrackPrev } from 'react-icons/tb';
 
 
 interface PlayerProps {
-    image: string; // Путь к изображению фона
-    title: string; // Название звукового трека
-    audioSource: string; // Путь к звуковому файлу
+    image: string;
+    title: string;
+    audioSource: string;
 }
 
 

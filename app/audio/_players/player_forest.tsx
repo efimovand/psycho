@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text } from 'react-native';
-import Player from '@/components/player'; // Импортируем компонент плеера
+import Player from '@/components/player';
 
 
 {/* Forest */ }
@@ -10,7 +10,7 @@ export default function PlayerScreen_Forest() {
             <Player
                 image={require('@/assets/images/sounds_bg/forest.png')}
                 title="Весенний лес"
-                audioSource={require('@/assets/sounds/forest.mp3')} // Пример источника аудио
+                audioSource={require('@/assets/sounds/forest.mp3')}
             />
         </SafeAreaView>
     );

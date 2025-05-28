@@ -21,13 +21,13 @@ export default function Practice() {
                 </View>
 
                 {/* Group 1 */}
-                <div className='audio-group' style={styles.audio_group}>
+                <View className='audio-group' style={styles.audio_group}>
 
                     {/* Title */}
                     <Text style={styles.group_title}>Легкие</Text>
 
                     {/* Cards List */}
-                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
+                    <View className='cards-list' style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
 
                         {/* Card 1 */}
 
@@ -49,18 +49,18 @@ export default function Practice() {
                         />
 
 
-                    </div>
+                    </View>
 
-                </div>
+                </View>
 
                 {/* Group 2 */}
-                <div className='audio-group' style={styles.audio_group}>
+                <View className='audio-group' style={styles.audio_group}>
 
                     {/* Title */}
                     <Text style={styles.group_title}>Средние</Text>
 
                     {/* Cards List */}
-                    <div className='cards-list' style={{ display: 'flex', gap: 20 }}>
+                    <View className='cards-list' style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
 
                         {/* Card 1 */}
                         <PracticeCard
@@ -80,9 +80,9 @@ export default function Practice() {
                             navigateTo="/practice/_practices/practice_relax"
                         />
 
-                    </div>
+                    </View>
 
-                </div>
+                </View>
 
             </ImageBackground>
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ImageBackground, Text, View, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
+import UpperSOSNavigation from './upper_navigation';
 
-import { IoClose } from "react-icons/io5";
 import { FaRegEye } from "react-icons/fa";
 import { MdHearing } from "react-icons/md";
 import { FaHand } from "react-icons/fa6";
@@ -23,10 +23,7 @@ export default function SOS_4_1() {
                 <View style={styles.overlay}>
 
                     {/* Close + № */}
-                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
-                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>4/5</Text>
-                    </View>
+                    <UpperSOSNavigation number='4' />
 
                     {/* Text */}
                     <View className='content' style={{ width: 355 }}>

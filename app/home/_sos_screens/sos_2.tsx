@@ -1,13 +1,50 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, ImageBackground, Text, View, TouchableOpacity } from "react-native";
+import React, { useEffect, useRef, useState } from 'react';
+import { SafeAreaView, StyleSheet, ImageBackground, Text, View, TouchableOpacity, Animated } from "react-native";
 import { useRouter } from 'expo-router';
+import UpperSOSNavigation from './upper_navigation';
 
-import { IoClose } from "react-icons/io5";
 
-
+// Дыхание по квадрату
 export default function SOS_2() {
 
     const router = useRouter();
+
+    const position = useRef(new Animated.ValueXY({ x: 122, y: 167 })).current;  // Начальная позиция точки
+    const [breathPhase, setBreathPhase] = useState("Приготовься...");  // Состояние для фазы дыхания
+
+    // Функция для движения точки по квадрату
+    const moveDot = () => {
+
+        const phaseSequence = [
+            { x: -122, y: 167, phase: 'Вдох' }, // Вдох
+            { x: -122, y: -80, phase: 'Задержи дыхание' },   // Задержка (вправо)
+            { x: 122, y: -80, phase: 'Выдох' },   // Выдох
+            { x: 122, y: 167, phase: 'Задержи дыхание' },   // Задержка (влево)
+        ];
+
+        const animateStep = (index) => {
+            const { x, y, phase } = phaseSequence[index];
+
+            Animated.timing(position, {
+                toValue: { x, y },
+                duration: 4000,
+                useNativeDriver: true,
+            }).start(() => {
+                setBreathPhase(phase); // Меняем фазу дыхания
+                if (index < phaseSequence.length - 1) {
+                    animateStep(index + 1); // Переходим к следующей фазе
+                } else {
+                    animateStep(0); // Если завершена последовательность, начинаем заново
+                }
+            });
+        };
+
+        animateStep(0); // Начинаем с первой фазы
+    };
+
+    useEffect(() => {
+        moveDot();
+    }, []);
 
 
     return (
@@ -20,10 +57,7 @@ export default function SOS_2() {
                 <View style={styles.overlay}>
 
                     {/* Close + № */}
-                    <View className='navigation' style={{ position: 'absolute', top: 0, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%', padding: 15, alignItems: 'center' }}>
-                        <IoClose style={{ height: 30, width: 30, color: 'rgb(255, 255, 255, 0.4)' }} onClick={() => router.push('/home')} />
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#BDBDB9' }}>2/5</Text>
-                    </View>
+                    <UpperSOSNavigation number='2' />
 
                     {/* Text */}
                     <View className='content' style={{ width: 355 }}>
@@ -38,8 +72,23 @@ export default function SOS_2() {
 
                     </View>
 
-                    {/* Square */}
-                    <View style={styles.square} />
+                    {/* Квадрат (не двигается) */}
+                    <View style={styles.square}>
+                        <Text style={styles.squareText} numberOfLines={2} >{breathPhase}</Text>
+                    </View>
+
+                    {/* Анимированная точка, которая будет двигаться по квадрату */}
+                    <Animated.View
+                        style={[
+                            styles.dot,
+                            {
+                                transform: [
+                                    { translateX: position.x },  // Анимация по оси X
+                                    { translateY: position.y },  // Анимация по оси Y
+                                ]
+                            }
+                        ]}
+                    />
 
                     {/* Next Btn */}
                     <TouchableOpacity style={styles.nextBtn} onPress={() => router.push('/home/_sos_screens/sos_3_1')}>
@@ -51,11 +100,8 @@ export default function SOS_2() {
             </ImageBackground>
 
         </SafeAreaView>
-
     );
-
 }
-
 
 // Styles
 export const styles = StyleSheet.create({
@@ -102,10 +148,29 @@ export const styles = StyleSheet.create({
     },
 
     square: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
         width: 250,
         height: 250,
         borderRadius: 5,
-        boxShadow: 'inset 0 0 0 5px #EEA3A0',
+        borderColor: '#EEA3A0',  // Цвет границ
+        borderWidth: 5,
+        marginBottom: 50,
+    },
+
+    squareText: {
+        fontSize: 24,
+        color: 'white',
+    },
+
+    dot: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        // backgroundColor: '#EEA3A0',  // Цвет точки
+        backgroundColor: '#FFFFFF',
+        position: 'absolute',
     },
 
     nextBtn: {
